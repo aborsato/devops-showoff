@@ -6,8 +6,8 @@ param clusterName string = 'aks101cluster'
 @description('The location of the Managed Cluster resource.')
 param location string = resourceGroup().location
 
-// @description('Optional DNS prefix to use with hosted Kubernetes API server FQDN.')
-// param dnsPrefix string
+@description('Optional DNS prefix to use with hosted Kubernetes API server FQDN.')
+param dnsPrefix string = 'a9o'
 
 @minValue(0)
 @maxValue(1023)
@@ -37,7 +37,7 @@ resource clusterName_resource 'Microsoft.ContainerService/managedClusters@2020-0
     type: 'SystemAssigned'
   }
   properties: {
-    // dnsPrefix: dnsPrefix
+    dnsPrefix: dnsPrefix
     agentPoolProfiles: [
       {
         name: 'agentpool'
